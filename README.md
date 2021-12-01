@@ -35,3 +35,5 @@ Etapes pour configurer Java :
   </dependencies>
 ```
 
+3. Il faut créer le hbase dans le edge (importer les données, les ajouter dans hbase shell) :
+...
