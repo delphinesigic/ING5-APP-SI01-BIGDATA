@@ -35,5 +35,7 @@ Etapes pour configurer Java :
   </dependencies>
 ```
 
-3. Il faut créer le hbase dans le edge (importer les données, les ajouter dans hbase shell) :
-...
+3. Il faut créer le HBase dans le edge (importer les données, les ajouter dans hbase shell) : 
+	- Ajout du fichier analyse_causale.csv dans le edge puis nous l'avons copié vers HDFS : /education/ece_2021_fall_app_1/m.maatouk-ece/projet .
+	- Création de la table HBASE : 'ece_2021_fall_app_1:analyse_causale' et des colonnes families (3 row keys : ticket, application et equipe).
+	- Configuration et connexion HBASE avec Java.
