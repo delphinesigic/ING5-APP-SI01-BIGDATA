@@ -1,4 +1,42 @@
-# ING5-APP-SI01-BigData
+# ING5-APP-SI01-BigData_SAVERY_SIGIC_MAATOUK
+
+## Introduction
+Notre projet consiste à lire une base de données de gestion de ticket d'une entreprise. Cette dernière est stockée dans **HBase** et est lu à partir d'un code **Java configurer avec Maven**.
+
+
+## Architecture de la base de données
+Utilisation des tables imbriquées.
+Une table principal :
+- Ticket
+
+2 sous-tables :
+- Equipe
+- Service
+
+Toutes ces données sont réunit dans un seul fichier ***csv*** stocké dans le **HDFS**.
+
+## Configuration Java
+On a configurer Java en utilisant des projets Maven. Nous avons ajouté les dependencies nécessaire, soit :
+- hbase-common
+- hbase-client
+
+Nous avons ensuite établi une connexion entre la table Hbase et le projet Maven en utilisant l'authentificatin **Kerberos**.
+
+## Configuration Hbase
+La row key principal est celle des identifiants des tickets afin de pouvoir faire des requêtes comme suit :
+- ...
+
+Nous avons des ***column families*** différents pour les autres colonnes.
+Si nécessaire, nous pouvons également créer des duplications de colonne et tables afin d'avoir d'autre row key pour créer d'autre types de requêtes comme :
+- ...
+
+## Exemple de requêtes avec notre modèle
+...
+
+
+
+---------------------------------------------
+# Brouillon
 
 Etapes pour configurer Java :
 1. Créer un projet et configurer un projet Maven parent
