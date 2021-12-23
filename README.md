@@ -30,7 +30,7 @@ On a configurer Java en utilisant des projets Maven. Nous avons ajouté les depe
 
 Nous avons ensuite établi une connexion entre la table HBase et le projet Maven en utilisant l'authentificatin **Kerberos**.
 
-## Configuration Hbase
+## Configuration HBase
 La row key principal est celle des identifiants des tickets afin de pouvoir faire des requêtes comme suit :
 - ...
 
@@ -40,15 +40,19 @@ Si nécessaire, nous pouvons également créer des duplications de colonne et ta
 
 ## Exemple de requêtes avec notre modèle
 1. Récupérer les tickets traiter par l’équipe SUPERVISION
+
 t | e_nom=‘SUPERVISION’
 
 2. Récupérer les tickets ayant une criticité élevée (gold)
+
 t | a_criticite=‘Gold’
 
 3. Récupérer les tickets à traiter en urgence
+
 t_severite=1
 
 4. Récupérer les tickets ouverts pour l’app a0599_00
+
 t | a0599_00
 
 
