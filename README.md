@@ -6,6 +6,7 @@ Notre projet consiste à lire une base de données de gestion de ticket d'une en
 
 ## Architecture de la base de données
 Utilisation des tables imbriquées.
+
 ![image](https://user-images.githubusercontent.com/47555601/147259664-3771dc47-0a7f-4bb0-a7d8-444cc5f2dc2e.png)
 
 Une table principal :
@@ -92,4 +93,4 @@ Etapes pour configurer Java :
 3. Il faut créer le HBase dans le edge (importer les données, les ajouter dans hbase shell) : 
 	- Ajout du fichier analyse_causale.csv dans le edge puis nous l'avons copié vers HDFS : /education/ece_2021_fall_app_1/m.maatouk-ece/projet .
 	- Création de la table HBase : 'ece_2021_fall_app_1:analyse_causale' et des colonnes families (3 row keys : ticket, application et equipe).
-	- Configuration et connexion HBASE avec Java.
+	- Configuration et connexion HBase avec Java.
