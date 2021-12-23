@@ -32,11 +32,27 @@ Nous avons ensuite établi une connexion entre la table HBase et le projet Maven
 
 ## Configuration HBase
 La row key principal est celle des identifiants des tickets afin de pouvoir faire des requêtes comme suit :
-- ...
+1. Récupérer la sévérité du ticket 342 
+
+t_342, cf : severite, 5
+
+2. Récupérer le nom du ticket 342
+
+t_342, cf : name, « ticket : regler pb »
+
+3. Récupérer la criticité de l’app associée au ticket 342
+
+t_342, cf : a_criticite, « silver »
 
 Nous avons des ***column families*** différents pour les autres colonnes.
 Si nécessaire, nous pouvons également créer des duplications de colonne et tables afin d'avoir d'autre row key pour créer d'autre types de requêtes comme :
-- ...
+1. Récupérer la sévérite du ticket 342 associé à l’appli 28
+
+a_28, cf : t_severite_t342, 5
+ 
+2. Récupérer le nom du ticket ayant une sévérité 5 associé à l ’appli 28
+
+a_28, cf : t_name_s5, « ticket : regler pb » 
 
 ## Exemple de requêtes avec notre modèle
 1. Récupérer les tickets traiter par l’équipe SUPERVISION
