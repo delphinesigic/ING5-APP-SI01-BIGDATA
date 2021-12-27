@@ -76,20 +76,38 @@ hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.separator="," -Dim
 ```
 
 ## Exemple de requêtes avec notre modèle
-A REMPLIR AVEC NOS EXEMPLES...
+
+Compléter avec plusieurs façons de faire et expliquer pourquoi certaines sont plus optimisées que d'autres ? 
 
 - Récupérer les tickets traiter par l’équipe SUPERVISION
 
 	t | e_nom=‘SUPERVISION’
 
+    	scan 'ece_2021_fall_app_1:analyse_causale', { COLUMNS => 'cf:severite_ticket', FILTER => "ValueFilter( =, 'binaryprefix:SUPERVISION')" }
+    
+    ou : 
+    
+    	scan 'ece_2021_fall_app_1:analyse_causale', { COLUMNS => 'cf:severite_ticket', FILTER => "ValueFilter( =, 'binaryprefix:e1')" } 
+
+
 - Récupérer les tickets ayant une criticité élevée (gold)
 
 	t | a_criticite=‘Gold’
+	
+		scan 'ece_2021_fall_app_1:analyse_causale', { FILTER => "ValueFilter( =, 'binaryprefix:Gold')" } 
+
 
 - Récupérer les tickets à traiter en urgence
 
 	t_severite=1
 
+		scan 'ece_2021_fall_app_1:analyse_causale', { COLUMNS => 'cf:severite_ticket', FILTER => "ValueFilter( =, 'binaryprefix:1')" } 
+
+	
+
 - Récupérer les tickets ouverts pour l’app a0599_00
 
 	t | a0599_00
+
+		scan 'ece_2021_fall_app_1:analyse_causale', { FILTER => "ValueFilter( =, 'binaryprefix:a0599_00')" } 
+
