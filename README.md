@@ -83,18 +83,18 @@ Compléter avec plusieurs façons de faire et expliquer pourquoi certaines sont 
 
 	t | e_nom=‘SUPERVISION’
 
-    	scan 'ece_2021_fall_app_1:analyse_causale', { COLUMNS => 'cf:severite_ticket', FILTER => "ValueFilter( =, 'binaryprefix:SUPERVISION')" }
+    	scan 'ece_2021_fall_app_1:analyse_causale', { COLUMNS => 'cf:equipe_traitement', FILTER => "ValueFilter( =, 'binaryprefix:SUPERVISION')" }
     
     ou : 
     
-    	scan 'ece_2021_fall_app_1:analyse_causale', { COLUMNS => 'cf:severite_ticket', FILTER => "ValueFilter( =, 'binaryprefix:e1')" } 
+    	scan 'ece_2021_fall_app_1:analyse_causale', { COLUMNS => 'cf:identifiant_equipe', FILTER => "ValueFilter( =, 'binaryprefix:e1')" } 
 
 
 - Récupérer les tickets ayant une criticité élevée (gold)
 
 	t | a_criticite=‘Gold’
 	
-		scan 'ece_2021_fall_app_1:analyse_causale', { FILTER => "ValueFilter( =, 'binaryprefix:Gold')" } 
+		scan 'ece_2021_fall_app_1:analyse_causale', { COLUMNS => 'cf:criticite_application', FILTER => "ValueFilter( =, 'binaryprefix:Gold')" } 
 
 
 - Récupérer les tickets à traiter en urgence
@@ -109,5 +109,5 @@ Compléter avec plusieurs façons de faire et expliquer pourquoi certaines sont 
 
 	t | a0599_00
 
-		scan 'ece_2021_fall_app_1:analyse_causale', { FILTER => "ValueFilter( =, 'binaryprefix:a0599_00')" } 
+		scan 'ece_2021_fall_app_1:analyse_causale', { COLUMNS => 'cf:identifiant_application', FILTER => "ValueFilter( =, 'binaryprefix:a0599_00')" } 
 
