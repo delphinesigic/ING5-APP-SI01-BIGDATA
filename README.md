@@ -28,7 +28,19 @@ On a configurer Java en utilisant des projets Maven. Nous avons ajouté les depe
 - hbase-common
 - hbase-client
 
-Nous avons ensuite établi une connexion entre la table HBase et le projet Maven en utilisant l'authentificatin **Kerberos**.
+Nous voulons ensuite établir une connexion entre la table HBase et le projet Maven. 
+Cependant, nous n'avons pas réussi à faire fonctionner les démons Hadoop (NameNode, SecondaryNameNode et ResourceManager) et le démon Hbase (HRegionServer, HMaster et Zookeeper) en lançant les commandes :
+```console
+./start-hadoop.sh
+start-hbase.sh
+```
+
+En effet lorsque nous exécutons la commande ***jps*** nous obtenons :
+```console
+2925578 Jps
+```
+
+Finalement, nous avons continuer le projet sans réaliser les requêtes dans le code Java mais dans le **Hbase shell** directement.
 
 ## Configuration HBase
 La row key principal est celle des identifiants des tickets afin de pouvoir faire des requêtes comme suit :
