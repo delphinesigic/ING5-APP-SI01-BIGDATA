@@ -24,11 +24,11 @@ Préfixer le nom des colonnes :
 Toutes ces données sont réunit dans un seul fichier ***csv*** stocké dans le **HDFS**.
 
 ## Configuration Java
-On a configurer Java en utilisant des projets Maven. Nous avons ajouté les dependencies nécessaire, soit :
+On a configurer Java en utilisant des projets Maven (parent et enfant). Nous avons ajouté les dependencies nécessaire dans le projet enfant, soit :
 - hbase-common
 - hbase-client
 
-Nous voulons ensuite établir une connexion entre la table HBase et le projet Maven. 
+Nous voulons ensuite établir une connexion entre la table HBase et le projet Maven (vous retrouverez le code dans le dossier "code" du git). 
 Cependant, nous n'avons pas réussi à faire fonctionner les démons Hadoop (NameNode, SecondaryNameNode et ResourceManager) et le démon Hbase (HRegionServer, HMaster et Zookeeper) en lançant les commandes :
 ```console
 ./start-hadoop.sh
@@ -65,8 +65,15 @@ Si nécessaire, nous pouvons également créer des duplications de colonne et ta
 - Récupérer le nom du ticket ayant une sévérité 5 associé à l ’appli 28
 
 	a_28, cf : t_name_s5, « ticket : regler pb » 
+	
+Pour cela, nous avons créer une table hbase contenant les données de notre fichier ***csv*** grâce à la commande suivante :
+```console
+hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.separator="," -Dimporttsv.columns=HBASE_ROW_KEY,cf:identifiant_application,cf:criticite_application,cf:statut_application,cf:date_ouverture_application,cf:semaine_ouverture_application,cf:identifiant_equipe,cf:equipe_traitement ece_2021_fall_app_1:analyse_causale /education/ece_2021_fall_app_1/m.maatouk-ece/projet/analyse_causale.csv
+```
 
 ## Exemple de requêtes avec notre modèle
+A REMPLIR AVEC NOS EXEMPLES...
+
 - Récupérer les tickets traiter par l’équipe SUPERVISION
 
 	t | e_nom=‘SUPERVISION’
@@ -82,47 +89,3 @@ Si nécessaire, nous pouvons également créer des duplications de colonne et ta
 - Récupérer les tickets ouverts pour l’app a0599_00
 
 	t | a0599_00
-
-
----------------------------------------------
-# Brouillon
-
-Etapes pour configurer Java :
-1. Créer un projet et configurer un projet Maven parent
-```console
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>app_project</groupId>
-  <artifactId>ticket</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
-```
-
-2. Créer un projet Maven enfant dans le parent:
-```console
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>app_project</groupId>
-    <artifactId>ticket</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <groupId>com</groupId>
-  <artifactId>hbase</artifactId>
-  <version>0.0.1-HBASE-SNAPSHOT</version>
-  <dependencies>
-	<dependency>
-	    <groupId>org.apache.hbase</groupId>
-	    <artifactId>hbase-client</artifactId>
-	    <version>2.0.2</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.apache.hbase</groupId>
-	    <artifactId>hbase-common</artifactId>
-	    <version>2.0.2</version>
-	</dependency>
-  </dependencies>
-```
-
-3. Il faut créer le HBase dans le edge (importer les données, les ajouter dans hbase shell) : 
-	- Ajout du fichier analyse_causale.csv dans le edge puis nous l'avons copié vers HDFS : /education/ece_2021_fall_app_1/m.maatouk-ece/projet .
-	- Création de la table HBase : 'ece_2021_fall_app_1:analyse_causale' et des colonnes families (3 row keys : ticket, application et equipe).
-	- Configuration et connexion HBase avec Java.
