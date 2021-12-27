@@ -21,7 +21,10 @@ Préfixer le nom des colonnes :
 - e + equipe_id
 - a + application_id
 
-Toutes ces données sont réunit dans un seul fichier ***csv*** stocké dans le **HDFS**.
+Toutes ces données sont réunit dans un seul fichier ***csv*** stocké dans le **HDFS** :
+```console
+/education/ece_2021_fall_app_1/m.maatouk-ece/projet/analyse_causale.csv
+```
 
 ## Configuration Java
 On a configurer Java en utilisant des projets Maven (parent et enfant). Nous avons ajouté les dependencies nécessaire dans le projet enfant, soit :
