@@ -77,8 +77,6 @@ hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.separator="," -Dim
 
 ## Exemple de requêtes avec notre modèle
 
-Compléter avec plusieurs façons de faire et expliquer pourquoi certaines sont plus optimisées que d'autres ? 
-
 - Récupérer les tickets traiter par l’équipe SUPERVISION
 
 	t | e_nom=‘SUPERVISION’
