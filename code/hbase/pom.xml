@@ -9,6 +9,13 @@
   <artifactId>hbase</artifactId>
   <version>0.0.1-HBASE-SNAPSHOT</version>
   <dependencies>
+      <dependency>
+        <groupId>jdk.tools</groupId>
+        <artifactId>jdk.tools</artifactId>
+        <version>1.8</version>
+        <scope>system</scope>
+        <systemPath>C:/Program Files/Java/jdk1.8.0_211/lib/tools.jar</systemPath>
+    </dependency>
 	<dependency>
 	    <groupId>org.apache.hbase</groupId>
 	    <artifactId>hbase-client</artifactId>
