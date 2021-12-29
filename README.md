@@ -27,12 +27,12 @@ Toutes ces données sont réunies dans un seul fichier ***csv*** stocké dans le
 ```
 
 ## Configuration Java
-On a configuré Java en utilisant des projets Maven (parent et enfant). Nous avons ajouté les dependencies nécessaires dans le projet enfant, soit :
+On a configuré Java en utilisant des projets Maven (parent et enfant). Nous avons ajouté les dependences nécessaires dans le projet enfant, soit :
 - hbase-common
 - hbase-client
 
 Nous voulons ensuite établir une connexion entre la table HBase et le projet Maven (vous retrouverez le code dans le dossier "code" du git). 
-Cependant, nous n'avons pas réussi à faire fonctionner les démons Hadoop (NameNode, SecondaryNameNode et ResourceManager) et le démon Hbase (HRegionServer, HMaster et Zookeeper) en lançant les commandes :
+Cependant, nous n'avons pas réussi à faire fonctionner les démons Hadoop (NameNode, SecondaryNameNode et ResourceManager) et Hbase (HRegionServer, HMaster et Zookeeper) en lançant les commandes :
 ```console
 ./start-hadoop.sh
 start-hbase.sh
@@ -69,7 +69,7 @@ Si nécessaire, nous pourrons également créer des duplications de colonnes afi
 
 	a_28, cf : t_name_s4, « ticket : regler pb » 
 	
-Pour cela, nous avons créé une table HBase contenant les données de notre fichier ***csv*** grâce à la commande suivante :
+Pour cela, nous avons créé une table HBase puis importé les données de notre fichier ***csv*** grâce à la commande suivante :
 ```console
 hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.separator="," -Dimporttsv.columns=HBASE_ROW_KEY,cf:severite_ticket,cf:identifiant_application,cf:criticite_application,cf:statut_application,cf:date_ouverture_application,cf:semaine_ouverture_application,cf:identifiant_equipe,cf:equipe_traitement ece_2021_fall_app_1:analyse_causale /education/ece_2021_fall_app_1/d.sigic-ece/projet/analyse_causale.csv
 
